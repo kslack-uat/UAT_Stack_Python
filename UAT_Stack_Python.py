@@ -22,10 +22,4 @@ class UAT_Stack:
         pass
 
 
-if __name__ == "__main__":
-    new_node = StackNode("node 1", None)
-    print(new_node)
-    print(new_node.GetData())
-    print(new_node.GetNext())
-    new_node.SetNext(new_node)
-    print(new_node.GetNext())
+
