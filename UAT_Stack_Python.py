@@ -30,10 +30,22 @@ class UAT_Stack:
         if(self.top == None):
             self.top = push_node    # Stack is empty, so simply point top to the new node
         else:
-            push_node.SetNext(top)      # Establish link between the old top node and the push_node (new node)
+            push_node.SetNext(self.top)      # Establish link between the old top node and the push_node (new node)
             self.top = push_node        # Change the node on the top of the stack
         
         self.size += 1
+
+
+    def Push(self, insert_value):
+        node = StackNode(insert_value)
+        self.PushNode(node)
+
+
+    def Pop(self):
+        old_top = self.top
+        self.top = self.top.GetNext()
+        self.size-=1
+        return old_top
 
 
     def Peek(self):

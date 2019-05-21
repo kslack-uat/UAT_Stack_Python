@@ -81,9 +81,48 @@ def StackTesting():
         print("FAIL - Newly created node is not found on the top of the stack. Instead, it found " + push_node_stack.Peek())
 
 
+    # Test Push function
+    push_stack = UAT_Stack_Python.UAT_Stack()
+    push_stack.Push("First Value Pushed")
+    top_push_stack = push_stack.Peek()
+    if(top_push_stack.GetData() ==  "First Value Pushed"):
+        print("Success - First Value Pushed is on the top of the stack.")
+    else:
+        print("FAIL - Newly created and pushed node is not at the top of the stack.")
+
+    push_stack_size = push_stack.GetSize()
+    if(push_stack_size == 1):
+        print("Success - Stack is the correct size after Push function execution.")
+    else:
+        print("FAIL - Stack size is not correct following Push function execution. Expected 1, found " + str(push_stack_size))
     
 
+    # Test Pop function
+    pop_stack = UAT_Stack_Python.UAT_Stack()
+    pop_stack.Push("first")
+    pop_stack.Push("second")
+    pop_stack.Push("third")
+    pop1_node = pop_stack.Pop()
+    if(pop1_node.GetData() == "third"):
+        print("Success - Correct value popped off the stack.")
+    else:
+        print("FAIL - Incorrect value popped off the stack. Expected:third  Received:" + str(pop1_node.GetData()))
+    if(pop_stack.GetSize() == 2):
+        print("Success - After pop, stack is the correct size.")
+    else:
+        print("FAIL - After pop, incorrect size is reported. Expected: 2, Received:" + str(pop_stack.GetSize()))
 
+    pop_stack.Pop()
+    pop3_node = pop_stack.Pop()
+    if(pop3_node.GetData() == "first"):
+        print("Success - Correct value popped off the stack.")
+    else:
+        print("FAIL - Incorrect value popped off the stack. Expected:third  Received:" + str(pop3_node.GetData()))
+    if(pop_stack.GetSize() == 0):
+        print("Success - After pop, stack is the correct size.")
+    else:
+        print("FAIL - After pop, incorrect size is reported. Expected: 2, Received:" + str(pop_stack.GetSize()))
+    
 
 if __name__ == "__main__":
     NodeTesting()
